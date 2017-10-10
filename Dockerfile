@@ -5,6 +5,7 @@ MAINTAINER David Personette <dperson@gmail.com>
 RUN export DEBIAN_FRONTEND='noninteractive' && \
     apt-get update -qq && \
     apt-get install -qqy --no-install-recommends curl procps \
+                p7zip-full \
                 transmission-daemon \
                 $(apt-get -s dist-upgrade|awk '/^Inst.*ecurity/ {print $2}') &&\
     apt-get clean && \
@@ -30,6 +31,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     chown -Rh debian-transmission. $dir && \
     rm -rf /var/lib/apt/lists/* /tmp/*
 COPY transmission.sh /usr/bin/
+COPY unrar.sh /usr/bin/
 
 VOLUME ["/var/lib/transmission-daemon"]
 
