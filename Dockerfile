@@ -30,6 +30,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
                 $file && \
     chown -Rh debian-transmission. $dir && \
     rm -rf /var/lib/apt/lists/* /tmp/*
+    
 COPY transmission.sh /usr/bin/
 COPY unrar.sh /usr/bin/
 
